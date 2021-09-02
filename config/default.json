@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://joshkpatterson:OuC32mxBa9P3HHN8@mycluster.39ocr.mongodb.net/comparator?retryWrites=true&w=majority"
+}
