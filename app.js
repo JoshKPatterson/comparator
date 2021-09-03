@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const file = fs.readFileSync('./data.json')
-const fileJson = JSON.parse(file);
+// const file = fs.readFileSync('./data.json')
+// const fileJson = JSON.parse(file);
 
 export default app;
