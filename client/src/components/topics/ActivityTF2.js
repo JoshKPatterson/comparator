@@ -3,7 +3,8 @@ import { itemList } from "../../utilities/data";
 import { initBout, changeBout, replenishBout } from "../../actions/boutActions";
 import { connect } from "react-redux";
 import { createBouts, nextBout, addNewBouts } from "../../customHooks";
-
+import { Card } from 'react-bootstrap';
+import './ActivityTF2.scss'
 const ActivityTF2 = (props) => {
   useEffect(() => {
     setup();
@@ -37,15 +38,27 @@ const ActivityTF2 = (props) => {
   }
 
   return props.bout.boutCurrent ? (
-    <>
-      <p>
-        {props.bout.boutCurrent.bout1} vs. {props.bout.boutCurrent.bout2}
-      </p>
-      {/* <button onClick={() => console.log(props.bout)}>Button</button> */}
-      <button onClick={() => nextBout(props.bout.boutQueue, props.changeBout)}>
+    <div className='selection_display'>
+      
+      <Card>
+        <Card.Img variant="top" src={itemList[props.bout.boutCurrent.bout1].thumbnail} />
+        <Card.Body>
+          <Card.Title>{itemList[props.bout.boutCurrent.bout1].name}</Card.Title>
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src={itemList[props.bout.boutCurrent.bout2].thumbnail} />
+        <Card.Body>
+          <Card.Title>{itemList[props.bout.boutCurrent.bout2].name}</Card.Title>
+        </Card.Body>
+      </Card>
+      {/* <p>
+        {itemList[props.bout.boutCurrent.bout1].name} vs. {itemList[props.bout.boutCurrent.bout2].name}
+      </p> */}
+      {/* <button onClick={() => nextBout(props.bout.boutQueue, props.changeBout)}>
         Button
-      </button>
-    </>
+      </button> */}
+    </div>
   ) : (
     <p>Loading...</p>
   );

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { editSelection } from "./actions/sectionActions";
 import VotingBooth from "./components/VotingBooth";
 import { TF2 } from "./actions/types";
+import { Container } from 'react-bootstrap';
 
 const App = (props) => {
   useEffect(() => {
@@ -19,9 +20,11 @@ const App = (props) => {
   return (
     <div>
       <Navigation />
-      <p>Hello</p>
-      <p>Selection: {props.section}</p>
+      {/* <p>Selection: {props.section}</p> */}
+      <Container>
       <VotingBooth />
+
+      </Container>
     </div>
   );
 };

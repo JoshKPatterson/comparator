@@ -12,7 +12,7 @@ const VotingBooth = ({ section }) => {
         return <p>No selection</p>;
     }
   };
-  return <div>{render()}</div>;
+  return <>{render()}</>;
 };
 
 const mapStateToProps = (state) => ({
