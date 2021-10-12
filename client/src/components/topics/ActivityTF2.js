@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { itemList } from "../../utilities/data";
 import { initBout, changeBout, replenishBout } from "../../actions/boutActions";
+import { castVote } from "../../actions/voteActions";
 import { connect } from "react-redux";
 import { createBouts, nextBout, addNewBouts } from "../../customHooks";
-import { Card } from 'react-bootstrap';
-import './ActivityTF2.scss'
+import { Card } from "react-bootstrap";
+import "./ActivityTF2.scss";
 const ActivityTF2 = (props) => {
   useEffect(() => {
     setup();
@@ -37,17 +38,33 @@ const ActivityTF2 = (props) => {
     replenish();
   }
 
+  const vote = (boutNum) => {
+    let votePackage = {
+      id: boutNum,
+      class: itemList[boutNum].class,
+      slot: itemList[boutNum].slot,
+    };
+    // props.castVote(votePackage);
+    console.log(votePackage);
+    nextBout();
+  };
+
   return props.bout.boutCurrent ? (
-    <div className='selection_display'>
-      
-      <Card>
-        <Card.Img variant="top" src={itemList[props.bout.boutCurrent.bout1].thumbnail} />
+    <div className="selection_display">
+      <Card onClick={() => vote(props.bout.boutCurrent.bout1)}>
+        <Card.Img
+          variant="top"
+          src={itemList[props.bout.boutCurrent.bout1].thumbnail}
+        />
         <Card.Body>
           <Card.Title>{itemList[props.bout.boutCurrent.bout1].name}</Card.Title>
         </Card.Body>
       </Card>
-      <Card>
-        <Card.Img variant="top" src={itemList[props.bout.boutCurrent.bout2].thumbnail} />
+      <Card onClick={() => vote(props.bout.boutCurrent.bout2)}>
+        <Card.Img
+          variant="top"
+          src={itemList[props.bout.boutCurrent.bout2].thumbnail}
+        />
         <Card.Body>
           <Card.Title>{itemList[props.bout.boutCurrent.bout2].name}</Card.Title>
         </Card.Body>
@@ -68,6 +85,9 @@ const mapStateToProps = (state) => ({
   bout: state.bout,
 });
 
-export default connect(mapStateToProps, { initBout, changeBout, replenishBout })(
-  ActivityTF2
-);
+export default connect(mapStateToProps, {
+  initBout,
+  changeBout,
+  replenishBout,
+  castVote,
+})(ActivityTF2);

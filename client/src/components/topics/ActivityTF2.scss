@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  width: 50vw;
+  width: 80vw;
 }
 
 .container {
@@ -17,17 +17,31 @@
 
 .card {
   width: 100%;
+  align-items: center;
+  border-radius: 10px;
   img {
     display: block;
-    max-width: 150px;
+    max-width: 90%;
     max-height: 200px;
     width: auto;
     height: auto;
+    padding: 0.5em;
     // @include for-tablet-portrait-up {
     //   width: 20%;
     // }
   }
+  .card-body {
+    width: 100%;
+    background-color: navy;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
   .card-title {
-    font-size: 5vw;
+    font-size: 4vw;
+    color: white;
+    text-align: center;
+  }
+  &:nth-of-type(1) {
+    margin-bottom: 2rem;
   }
 }
