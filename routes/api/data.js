@@ -23,6 +23,11 @@ router.get("/", async (req, res) => {
 router.post("/", (req, res) => {
   console.log(req.body);
   try {
+    Stat.findOneAndUpdate(
+      {name: req.body.category},
+      {$inc: { [`score.${req.body.votedItem}`] : 1}},
+      (err, doc) => err ? console.log(err) : console.log(doc)
+    )
     res.status(200).json(req.body);
   } catch (e) {
     res.status(400).json({ msg: e.message });

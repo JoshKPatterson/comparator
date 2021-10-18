@@ -40,9 +40,8 @@ const ActivityTF2 = (props) => {
 
   const vote = (boutNum) => {
     let votePackage = {
-      id: boutNum + 1,
-      // class: itemList[boutNum].class,
-      // slot: itemList[boutNum].slot,
+      category: 'tf2',
+      votedItem: boutNum + 1,
     };
     props.castVote(votePackage);
     console.log(votePackage);

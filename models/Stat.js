@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 // Create Schema
 const StatSchema = new Schema({
   name: {
-    type: Object,
+    type: String,
     required: true,
   },
   score: {
