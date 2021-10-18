@@ -1,12 +1,13 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import fs from 'fs';
-import config from './config';
-import path from 'path'
-import itemRoutes from './routes/api/items';
-import statRoutes from './routes/api/stats';
-import dataRoutes from './routes/api/data';
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import fs from "fs";
+import config from "./config";
+import path from "path";
+
+import itemRoutes from "./routes/api/items";
+import statRoutes from "./routes/api/stats";
+import dataRoutes from "./routes/api/data";
 
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
@@ -14,7 +15,7 @@ const { MONGO_URI, MONGO_DB_NAME } = config;
 const app = express();
 
 // Bodyparser Middleware
-app.use(express.json());
+app.use(bodyParser.json());
 
 // DB Config
 const db = `${MONGO_URI}/${MONGO_DB_NAME}`;
@@ -27,13 +28,13 @@ mongoose
     // useFindAndModify: false,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB Connected..."))
+  .then(() => console.log("MongoDB Connected!"))
   .catch((err) => console.log(err));
 
 // Use Routes
 // app.use('/api/data', itemRoutes);
 // app.use('/api/data', statRoutes);
-app.use('/api/data', dataRoutes)
+app.use("/api/data", dataRoutes);
 
 // Serve Static Assets If In Production
 if (process.env.NODE_ENV === "production") {

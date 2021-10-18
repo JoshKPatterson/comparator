@@ -40,13 +40,13 @@ const ActivityTF2 = (props) => {
 
   const vote = (boutNum) => {
     let votePackage = {
-      id: boutNum,
-      class: itemList[boutNum].class,
-      slot: itemList[boutNum].slot,
+      id: boutNum + 1,
+      // class: itemList[boutNum].class,
+      // slot: itemList[boutNum].slot,
     };
-    // props.castVote(votePackage);
+    props.castVote(votePackage);
     console.log(votePackage);
-    nextBout();
+    nextBout(props.bout.boutQueue, props.changeBout);
   };
 
   return props.bout.boutCurrent ? (
