@@ -1,2 +1,3 @@
 createBout can create bouts with the same ID, need to check for same IDs
+pictures have inconsistent load times
 
